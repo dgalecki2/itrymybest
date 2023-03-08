@@ -1,3 +1,12 @@
+import { Heading } from "components/Heading/Heading";
+import { ProductsList } from "components/ProductsList/ProductsList";
+
 export function StartPage() {
-  return <>Start Page goes here</>;
+  return (
+    <>
+      <Heading level={1}>Shopping list</Heading>
+      <br />
+      <ProductsList />
+    </>
+  );
 }

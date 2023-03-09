@@ -8,15 +8,16 @@ import {
 
 const initialContext = {
   categoriesList: [
-    { id: 1, name: "Fruits" },
-    { id: 2, name: "Dairy" },
-    { id: 3, name: "Bread" },
+    { text: "Fruits", value: 1 },
+    { text: "Dairy", value: 2 },
+    { text: "Bread", value: 3 },
   ],
   measureUnitsList: [
-    { id: 1, name: "kilogram(s)" },
-    { id: 2, name: "liter(s)" },
-    { id: 3, name: "piece(s)" },
+    { text: "kilogram(s)", value: 1 },
+    { text: "liter(s)", value: 2 },
+    { text: "piece(s)", value: 3 },
   ],
+  productToEditId: 0,
   productsList: [
     {
       categoryId: 1,
@@ -51,8 +52,10 @@ const initialContext = {
       quantity: 6,
     },
   ],
+  removeProduct: (() => {}) as Dispatch<SetStateAction<any>>,
   setCategoriesList: (() => {}) as Dispatch<SetStateAction<any>>,
   setMeasureUnitsList: (() => {}) as Dispatch<SetStateAction<any>>,
+  setProductToEditId: (() => {}) as Dispatch<SetStateAction<any>>,
   setProductsList: (() => {}) as Dispatch<SetStateAction<any>>,
 };
 
@@ -65,18 +68,28 @@ export function ApiContextProvider({ children }: any) {
   const [measureUnitsList, setMeasureUnitsList] = useState<any>(
     initialContext.measureUnitsList,
   );
+  const [productToEditId, setProductToEditId] = useState<number>(0);
   const [productsList, setProductsList] = useState<any>(
     initialContext.productsList,
   );
+
+  const removeProduct = (productId: any) => {
+    setProductsList((products: any) =>
+      products.filter((product: any) => product.id !== productId),
+    );
+  };
 
   return (
     <ApiContext.Provider
       value={{
         categoriesList,
         measureUnitsList,
+        productToEditId,
         productsList,
+        removeProduct,
         setCategoriesList,
         setMeasureUnitsList,
+        setProductToEditId,
         setProductsList,
       }}
     >

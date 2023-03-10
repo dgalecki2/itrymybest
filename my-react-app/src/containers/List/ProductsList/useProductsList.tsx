@@ -8,6 +8,7 @@ export default function useProductsList() {
     productsList,
     removeProduct,
     setProductToEditId,
+    toggleProductBoughtStatus,
   }: any = useApiContext();
 
   const preparedProductsList = categoriesList.map(
@@ -24,7 +25,13 @@ export default function useProductsList() {
               )?.text;
               return (
                 <>
-                  <p key={product.name}>
+                  <p
+                    key={product.name}
+                    onClick={() => {
+                      toggleProductBoughtStatus(product.id);
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
                     <span
                       style={
                         product.isBought
@@ -33,7 +40,8 @@ export default function useProductsList() {
                       }
                     >{`${product.name} - ${product.quantity} ${measureUnitName}`}</span>{" "}
                     <span
-                      onClick={() => {
+                      onClick={(event: any) => {
+                        event.stopPropagation();
                         setProductToEditId(product.id);
                       }}
                       style={{ cursor: "pointer", display: "inline" }}
@@ -41,7 +49,8 @@ export default function useProductsList() {
                       ✏️
                     </span>
                     <span
-                      onClick={() => {
+                      onClick={(event: any) => {
+                        event.stopPropagation();
                         removeProduct(product.id);
                       }}
                       style={{ cursor: "pointer", display: "inline" }}

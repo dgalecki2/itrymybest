@@ -57,6 +57,7 @@ const initialContext = {
   setMeasureUnitsList: (() => {}) as Dispatch<SetStateAction<any>>,
   setProductToEditId: (() => {}) as Dispatch<SetStateAction<any>>,
   setProductsList: (() => {}) as Dispatch<SetStateAction<any>>,
+  toggleProductBoughtStatus: (() => {}) as Dispatch<SetStateAction<any>>,
 };
 
 const ApiContext = createContext(initialContext);
@@ -78,6 +79,19 @@ export function ApiContextProvider({ children }: any) {
       products.filter((product: any) => product.id !== productId),
     );
   };
+  const toggleProductBoughtStatus = (productId: any) => {
+    setProductsList((products: any) => {
+      const foundProductIndex = products.findIndex(
+        (product: any) => +product.id === +productId,
+      );
+      let newProductsList = [...products];
+      newProductsList[foundProductIndex] = {
+        ...products[foundProductIndex],
+        isBought: !products[foundProductIndex].isBought,
+      };
+      return newProductsList;
+    });
+  };
 
   return (
     <ApiContext.Provider
@@ -91,6 +105,7 @@ export function ApiContextProvider({ children }: any) {
         setMeasureUnitsList,
         setProductToEditId,
         setProductsList,
+        toggleProductBoughtStatus,
       }}
     >
       {children}

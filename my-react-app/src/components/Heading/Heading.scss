@@ -1,0 +1,13 @@
+@import "styles/fonts.scss";
+
+.heading {
+  &__heading {
+    font-family: $secondaryFontFamily;
+    &--level1 {
+      font-size: 4rem;
+    }
+    &--level2 {
+      font-size: 3.2rem;
+    }
+  }
+}

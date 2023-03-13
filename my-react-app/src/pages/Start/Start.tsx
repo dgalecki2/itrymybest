@@ -5,7 +5,7 @@ import { ProductsList } from "containers/List/ProductsList/ProductsList";
 export function StartPage() {
   return (
     <>
-      <Heading level={1}>Shopping list</Heading>
+      <Heading level={1}>Shopping list 🛒</Heading>
       <br />
       <ProductsList />
       <br />

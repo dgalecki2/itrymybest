@@ -1,0 +1,11 @@
+@import "styles/fonts.scss";
+
+.productName {
+  &__name {
+    font-family: $primaryFontFamily;
+    font-size: 2rem;
+    &--bought {
+      text-decoration-line: line-through;
+    }
+  }
+}

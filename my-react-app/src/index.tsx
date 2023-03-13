@@ -1,15 +1,19 @@
+import { Layout } from "components/Layout/Layout";
 import { StartPage } from "pages/Start/Start";
 import ReactDOM from "react-dom/client";
 import { ApiContextProvider } from "utils/apiContext";
 import reportWebVitals from "./reportWebVitals";
-import "./reset.css";
+import "./styles/reset.css";
+import "./styles/style.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );
 root.render(
   <ApiContextProvider>
-    <StartPage />
+    <Layout>
+      <StartPage />
+    </Layout>
   </ApiContextProvider>,
 );
 

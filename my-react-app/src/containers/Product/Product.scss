@@ -1,0 +1,12 @@
+.product {
+  &__container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__leftContainer {
+    align-items: center;
+    column-gap: 1rem;
+    display: flex;
+  }
+}

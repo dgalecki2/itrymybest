@@ -1,0 +1,17 @@
+@import "styles/fonts.scss";
+
+.button {
+  &__button {
+    background-color: lightsalmon;
+    border: none;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    font-family: $primaryFontFamily;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 0.4rem;
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

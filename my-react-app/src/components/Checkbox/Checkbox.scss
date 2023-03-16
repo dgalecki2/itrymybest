@@ -1,0 +1,54 @@
+@import "styles/fonts.scss";
+
+.checkbox {
+  &__checkboxContainer {
+    font-family: $primaryFontFamily;
+  }
+  &__input {
+    display: none;
+    &:checked + .checkbox__slider {
+      background-color: lightsalmon;
+      &:before {
+        transform: translateX(2.6rem);
+        -ms-transform: translateX(2.6rem);
+        -webkit-transform: translateX(2.6rem);
+      }
+    }
+    &:focus + .checkbox__slider {
+      box-shadow: 0 0 0.1rem black;
+    }
+  }
+  &__label {
+    align-items: center;
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    position: relative;
+  }
+  &__slider {
+    background-color: lightgrey;
+    border-radius: 3.4rem;
+    bottom: 0;
+    cursor: pointer;
+    height: 3.4rem;
+    left: 0;
+    position: relative;
+    right: 0;
+    top: 0;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    width: 6rem;
+    &:before {
+      background-color: white;
+      border-radius: 50%;
+      bottom: 0.4rem;
+      content: "";
+      height: 2.6rem;
+      left: 0.4rem;
+      position: absolute;
+      transition: 0.4s;
+      -webkit-transition: 0.4s;
+      width: 2.6rem;
+    }
+  }
+}

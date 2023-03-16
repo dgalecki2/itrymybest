@@ -1,4 +1,6 @@
+import { FormFieldValidationError } from "components/FormFieldValidationError/FormFieldValidationError";
 import { useInput } from "./useInput";
+import "./Input.scss";
 
 export function Input({
   id,
@@ -7,26 +9,35 @@ export function Input({
   onBlur,
   onChange,
   onFocus,
-  placeholder,
   required,
   value,
 }: any) {
-  const { withError } = useInput({ error: meta.error, touched: meta.touched });
+  const { inputClassName, withError } = useInput({
+    error: meta.error,
+    touched: meta.touched,
+    value,
+  });
 
   return (
-    <div>
-      <label htmlFor={id}>
-        {label} {required && "*"}
-      </label>
+    <div className="input__container">
       <input
+        className={inputClassName}
+        id={id}
         onBlur={onBlur}
         onChange={onChange}
         onFocus={onFocus}
-        placeholder={placeholder}
         type="text"
         value={value || ""}
       />
-      {withError && <p>{meta.error}</p>}
+      <label
+        className="input__label"
+        htmlFor={id}
+      >
+        {label}&nbsp;{required && "*"}
+      </label>
+      {withError && (
+        <FormFieldValidationError>{meta.error}</FormFieldValidationError>
+      )}
     </div>
   );
 }

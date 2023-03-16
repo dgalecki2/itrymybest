@@ -7,14 +7,9 @@ import { ELEMENT_TYPE } from "constants/elementType";
 import { FORM_MODE } from "constants/formMode";
 import { Field, Form as ReactFinalForm } from "react-final-form";
 import { validateValue } from "utils/validateValue";
+import "./Form.scss";
 
-export function Form({
-  fields,
-  initialValues,
-  mode,
-  onCancel,
-  onSubmit,
-}: any) {
+export function Form({ fields, initialValues, mode, onCancel, onSubmit }: any) {
   return (
     <ReactFinalForm
       initialValues={initialValues}
@@ -28,7 +23,7 @@ export function Form({
               formRenderProps.handleSubmit();
             }}
           >
-            <div>
+            <div className="form__fieldsContainer">
               {fields.map((field: any) => {
                 const fieldKey = `field-${field.name}`;
                 const fieldId = `field-id-${field.name}`;
@@ -79,6 +74,7 @@ export function Form({
                             {...fieldRenderProps.input}
                             id={fieldId}
                             label={field.label}
+                            meta={fieldRenderProps.meta}
                             options={field.options}
                             required={field.required}
                             value={initialValues?.[field.name]}
@@ -109,7 +105,6 @@ export function Form({
                             id={fieldId}
                             label={field.label}
                             meta={fieldRenderProps.meta}
-                            placeholder={field.placeholder}
                             required={field.required}
                           />
                         )}
@@ -123,7 +118,7 @@ export function Form({
               })}
               <Button
                 disabled={formRenderProps.hasValidationErrors}
-                text={initialValues ? "Edit" : "Add"}
+                text="Submit"
                 type={BUTTON_TYPE.SUBMIT}
               />
               {mode === FORM_MODE.EDIT && (

@@ -1,4 +1,5 @@
 import { useCheckbox } from "./useCheckbox";
+import "./Checkbox.scss";
 
 export function Checkbox({
   checked,
@@ -15,16 +16,20 @@ export function Checkbox({
   });
 
   return (
-    <div>
-      <label>
+    <div className="checkbox__checkboxContainer">
+      <label className="checkbox__label">
+        <span className="checkbox__labelContent">
+          {label} {required && "*"}
+        </span>
         <input
           checked={checked}
+          className="checkbox__input"
           onBlur={onBlur}
           onChange={onChange}
           onFocus={onFocus}
           type="checkbox"
         />
-        {label} {required && "*"}
+        <span className="checkbox__slider"></span>
       </label>
       {withError && <p>{meta.error}</p>}
     </div>

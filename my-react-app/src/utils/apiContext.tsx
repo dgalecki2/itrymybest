@@ -8,9 +8,9 @@ import {
 
 const initialContext = {
   categoriesList: [
-    { text: "Fruits", value: 1 },
-    { text: "Dairy", value: 2 },
-    { text: "Bread", value: 3 },
+    { icon: <>🍎</>, text: "Fruits", value: 1 },
+    { icon: <>💦</>, text: "Dairy", value: 2 },
+    { icon: <>🍞</>, text: "Bread", value: 3 },
   ],
   measureUnitsList: [
     { text: "kilogram(s)", value: 1 },
@@ -39,7 +39,7 @@ const initialContext = {
       categoryId: 3,
       id: 3,
       isBought: true,
-      measureUnitId: 1,
+      measureUnitId: 3,
       name: "Bread",
       quantity: 2,
     },
@@ -47,7 +47,7 @@ const initialContext = {
       categoryId: 3,
       id: 4,
       isBought: false,
-      measureUnitId: 1,
+      measureUnitId: 3,
       name: "Rolls",
       quantity: 6,
     },

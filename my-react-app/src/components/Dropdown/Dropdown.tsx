@@ -1,7 +1,12 @@
+import { FormFieldValidationError } from "components/FormFieldValidationError/FormFieldValidationError";
+import { ReactComponent as ArrowheadIcon } from "icons/arrowhead.svg";
+import { useDropdown } from "./useDropdown";
+import "./Dropdown.scss";
+
 export function Dropdown({
   id,
   label,
-  name,
+  meta,
   onBlur,
   onChange,
   onFocus,
@@ -9,37 +14,53 @@ export function Dropdown({
   required,
   value,
 }: any) {
+  const {
+    areOptionsVisible,
+    dropdownClassName,
+    handleDropdownClick,
+    handleOptionClick,
+    iconClassName,
+    selectedOption,
+    withError,
+  } = useDropdown({ meta, onChange, options, value });
+
   return (
-    <>
-      <label htmlFor={id}>
-        {label} {required && "*"}
-      </label>
-      <select
-        defaultValue=""
+    <div className="dropdown__container">
+      <input
+        className={dropdownClassName}
+        defaultValue={selectedOption.text || ""}
         id={id}
-        name={name}
         onBlur={onBlur}
-        onChange={onChange}
+        onChange={undefined}
+        onClick={handleDropdownClick}
         onFocus={onFocus}
-        value={value}
+        type="text"
+      />
+      {areOptionsVisible && (
+        <div className="dropdown__optionsContainer">
+          {options.map((option: any) => {
+            return (
+              <div
+                className="dropdown__option"
+                key={option.value}
+                onClick={() => handleOptionClick(option)}
+              >
+                {option.text}
+              </div>
+            );
+          })}
+        </div>
+      )}
+      <ArrowheadIcon className={iconClassName} />
+      <label
+        className="dropdown__label"
+        htmlFor={id}
       >
-        <option
-          disabled
-          value=""
-        >
-          Select option
-        </option>
-        {options.map((option: any) => {
-          return (
-            <option
-              key={option.value}
-              value={option.value}
-            >
-              {option.text}
-            </option>
-          );
-        })}
-      </select>
-    </>
+        {label}&nbsp;{required && "*"}
+      </label>
+      {withError && (
+        <FormFieldValidationError>{meta.error}</FormFieldValidationError>
+      )}
+    </div>
   );
 }

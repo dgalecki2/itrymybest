@@ -1,4 +1,7 @@
 .productsList {
+  &__categoryHeading {
+    margin: 2rem 0 1.2rem 0;
+  }
   &__container {
     display: flex;
     flex-direction: column;

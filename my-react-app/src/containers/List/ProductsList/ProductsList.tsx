@@ -15,13 +15,22 @@ export function ProductsList() {
 
   return categoriesList.map(
     (category: { icon: any; text: string; value: number }) => {
+      const currentCategoryProducts = productsList.filter(
+        (product: any) => +product.categoryId === +category.value,
+      );
+      const currentCategoryAllProductsQuantity = currentCategoryProducts.length;
+      const currentCategoryUnboughtProductsQuantity =
+        currentCategoryProducts.filter(
+          (product: any) => !product.isBought,
+        ).length;
       return (
         <div key={category.value}>
           <Heading
             className="productsList__categoryHeading"
             level={2}
           >
-            {category.text} {category.icon}
+            {category.text} ({currentCategoryUnboughtProductsQuantity}/
+            {currentCategoryAllProductsQuantity}) {category.icon}
           </Heading>
           <div className="productsList__container">
             {productsList

@@ -4,9 +4,15 @@ import { VALIDATOR_NAME } from "constants/validatorName";
 import { useApiContext } from "utils/apiContext";
 import { trimValue } from "utils/formatValue";
 
-export function useAddEditProductForm({ mode }: any) {
-  const { categoriesList, measureUnitsList, setProductsList }: any =
-    useApiContext();
+export function useAddEditProductForm({ setIsModalVisible }: any) {
+  const {
+    categoriesList,
+    measureUnitsList,
+    productToEditId,
+    productsList,
+    setProductToEditId,
+    setProductsList,
+  }: any = useApiContext();
 
   const fields: any[] = [
     {
@@ -50,7 +56,17 @@ export function useAddEditProductForm({ mode }: any) {
       validatorName: VALIDATOR_NAME.PRODUCT_QUANTITY,
     },
   ];
+  const headingText = `${productToEditId === 0 ? "Add new" : "Edit"} product`;
+  const mode = +productToEditId > 0 ? FORM_MODE.EDIT : FORM_MODE.ADD;
+  const initialValues =
+    mode === FORM_MODE.EDIT
+      ? productsList.find((item: any) => +item.id === +productToEditId)
+      : {};
 
+  const onCancel = () => {
+    setProductToEditId(0);
+    setIsModalVisible(false);
+  };
   const onSubmit = (values: any) => {
     if (mode === FORM_MODE.ADD) {
       setProductsList((list: any) => [
@@ -64,6 +80,8 @@ export function useAddEditProductForm({ mode }: any) {
           quantity: values.quantity,
         },
       ]);
+      setProductToEditId(0);
+      setIsModalVisible(false);
       return;
     }
     setProductsList((list: any) => {
@@ -74,10 +92,15 @@ export function useAddEditProductForm({ mode }: any) {
       newList[foundProductIndex] = values;
       return newList;
     });
+    setProductToEditId(0);
+    setIsModalVisible(false);
   };
 
   return {
     fields,
+    headingText,
+    initialValues,
+    onCancel,
     onSubmit,
   };
 }

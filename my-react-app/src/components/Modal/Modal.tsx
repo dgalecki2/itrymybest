@@ -2,22 +2,17 @@ import { Children, cloneElement, isValidElement, ReactElement } from "react";
 import { useModal } from "./useModal";
 import "./Modal.scss";
 
-export function Modal({ children, trigger }: any) {
+export function Modal({ children, onTriggerClick, trigger }: any) {
   const {
     handleCloseIconClick,
     handleTriggerClick,
     isModalVisible,
     setIsModalVisible,
-  } = useModal();
+  } = useModal({ onTriggerClick });
 
   return (
     <>
-      <div
-        className="modal__trigger"
-        onClick={handleTriggerClick}
-      >
-        {trigger}
-      </div>
+      <div onClick={handleTriggerClick}>{trigger}</div>
       {isModalVisible && (
         <div className="modal__containerExternal">
           <div className="modal__container">

@@ -4,19 +4,11 @@ import { Dropdown } from "components/Dropdown/Dropdown";
 import { Input } from "components/Input/Input";
 import { BUTTON_TYPE } from "constants/buttonType";
 import { ELEMENT_TYPE } from "constants/elementType";
-import { FORM_MODE } from "constants/formMode";
 import { Field, Form as ReactFinalForm } from "react-final-form";
 import { validateValue } from "utils/validateValue";
 import "./Form.scss";
 
-export function Form({
-  displayCancelButton,
-  fields = [],
-  initialValues,
-  mode,
-  onCancel,
-  onSubmit,
-}: any) {
+export function Form({ fields = [], initialValues, onCancel, onSubmit }: any) {
   return (
     <ReactFinalForm
       initialValues={initialValues}
@@ -130,14 +122,12 @@ export function Form({
                   text="Submit"
                   type={BUTTON_TYPE.SUBMIT}
                 />
-                {(mode === FORM_MODE.EDIT || displayCancelButton) && (
-                  <Button
-                    className="button__button button__button--cancelable"
-                    onClick={onCancel}
-                    text="Cancel"
-                    type={BUTTON_TYPE.BUTTON}
-                  />
-                )}
+                <Button
+                  className="button__button button__button--cancelable"
+                  onClick={onCancel}
+                  text="Cancel"
+                  type={BUTTON_TYPE.BUTTON}
+                />
               </div>
             </div>
           </form>

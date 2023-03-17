@@ -1,10 +1,15 @@
 import { useState } from "react";
 
-export function useModal() {
+export function useModal({ onTriggerClick }: any) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const handleCloseIconClick = () => setIsModalVisible(false);
-  const handleTriggerClick = () => setIsModalVisible(true);
+  const handleCloseIconClick = () => {
+    setIsModalVisible(false);
+  };
+  const handleTriggerClick = () => {
+    setIsModalVisible(true);
+    onTriggerClick();
+  };
 
   return {
     handleCloseIconClick,

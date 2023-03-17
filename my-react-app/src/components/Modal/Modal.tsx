@@ -1,9 +1,14 @@
+import { Children, cloneElement, isValidElement, ReactElement } from "react";
 import { useModal } from "./useModal";
 import "./Modal.scss";
 
 export function Modal({ children, trigger }: any) {
-  const { handleCloseIconClick, handleTriggerClick, isModalVisible } =
-    useModal();
+  const {
+    handleCloseIconClick,
+    handleTriggerClick,
+    isModalVisible,
+    setIsModalVisible,
+  } = useModal();
 
   return (
     <>
@@ -22,7 +27,13 @@ export function Modal({ children, trigger }: any) {
             >
               &times;
             </span>
-            <div className="modal__content">{children}</div>
+            <div className="modal__content">
+              {Children.map(children, (child) =>
+                isValidElement(child)
+                  ? cloneElement(child as ReactElement, { setIsModalVisible })
+                  : child,
+              )}
+            </div>
           </div>
         </div>
       )}

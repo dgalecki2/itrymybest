@@ -9,7 +9,14 @@ import { Field, Form as ReactFinalForm } from "react-final-form";
 import { validateValue } from "utils/validateValue";
 import "./Form.scss";
 
-export function Form({ fields, initialValues, mode, onCancel, onSubmit }: any) {
+export function Form({
+  displayCancelButton,
+  fields = [],
+  initialValues,
+  mode,
+  onCancel,
+  onSubmit,
+}: any) {
   return (
     <ReactFinalForm
       initialValues={initialValues}
@@ -116,18 +123,22 @@ export function Form({ fields, initialValues, mode, onCancel, onSubmit }: any) {
                   }
                 }
               })}
-              <Button
-                disabled={formRenderProps.hasValidationErrors}
-                text="Submit"
-                type={BUTTON_TYPE.SUBMIT}
-              />
-              {mode === FORM_MODE.EDIT && (
+              <div className="form__buttonsContainer">
                 <Button
-                  onClick={onCancel}
-                  text="Cancel"
-                  type={BUTTON_TYPE.RESET}
+                  className="button__button"
+                  disabled={formRenderProps.hasValidationErrors}
+                  text="Submit"
+                  type={BUTTON_TYPE.SUBMIT}
                 />
-              )}
+                {(mode === FORM_MODE.EDIT || displayCancelButton) && (
+                  <Button
+                    className="button__button button__button--cancelable"
+                    onClick={onCancel}
+                    text="Cancel"
+                    type={BUTTON_TYPE.BUTTON}
+                  />
+                )}
+              </div>
             </div>
           </form>
         );

@@ -3,15 +3,19 @@
 .button {
   &__button {
     background-color: lightsalmon;
-    border: none;
+    border: 0.1rem solid lightsalmon;
     border-radius: 0.6rem;
     cursor: pointer;
     font-family: $primaryFontFamily;
-    font-size: 1rem;
-    margin-top: 1rem;
-    padding: 0.4rem;
+    font-size: 1.4rem;
+    padding: 0.6rem 1.2rem;
     &:disabled {
       cursor: not-allowed;
+    }
+    &--cancelable {
+      background-color: white;
+      border: 0.1rem solid lightsalmon;
+      color: lightsalmon;
     }
   }
 }

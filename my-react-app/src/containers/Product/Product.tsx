@@ -1,5 +1,7 @@
+import { Modal } from "components/Modal/Modal";
 import { ProductIcon } from "components/ProductIcon/ProductIcon";
 import { ProductName } from "components/ProductName/ProductName";
+import { RemoveProductForm } from "containers/Form/Product/Remove/RemoveProductForm";
 import "./Product.scss";
 
 export function Product({
@@ -13,9 +15,12 @@ export function Product({
     <>
       <div className="product__container">
         <div className="product__leftContainer">
-          <ProductIcon onClick={() => removeProduct(product.id)}>
-            🗑️
-          </ProductIcon>
+          <Modal trigger={<>🗑️</>}>
+            <RemoveProductForm
+              displayCancelButton
+              onSubmit={() => removeProduct(product.id)}
+            />
+          </Modal>
           <ProductName
             measureUnitName={measureUnitName}
             product={product}

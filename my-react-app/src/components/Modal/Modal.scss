@@ -3,24 +3,40 @@
     cursor: pointer;
     font-size: 3rem;
     position: absolute;
-    right: 0;
+    right: 0.6rem;
     top: 0;
   }
   &__container {
-    margin: 20vh auto;
-    min-height: 60vh;
+    align-items: center;
+    background-color: white;
+    border: 0.1rem solid lightsalmon;
+    border-radius: 0.8rem;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0;
     position: relative;
     width: 50vw;
   }
   &__containerExternal {
+    align-items: center;
     backdrop-filter: blur(0.4rem);
+    display: flex;
     height: 100vh;
+    justify-content: center;
     left: 0;
     position: absolute;
     top: 0;
     width: 100vw;
+    z-index: 9;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    row-gap: 2rem;
   }
   &__trigger {
     cursor: pointer;
+    font-size: 2rem;
   }
 }

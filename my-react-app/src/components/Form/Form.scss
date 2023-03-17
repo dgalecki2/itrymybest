@@ -1,4 +1,9 @@
 .form {
+  &__buttonsContainer {
+    column-gap: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+  }
   &__fieldsContainer {
     display: flex;
     flex-direction: column;

@@ -10,5 +10,6 @@ export function useModal() {
     handleCloseIconClick,
     handleTriggerClick,
     isModalVisible,
+    setIsModalVisible,
   };
 }

@@ -1,0 +1,8 @@
+@import "styles/fonts.scss";
+
+.paragraph {
+  &__paragraph {
+    font-family: $primaryFontFamily;
+    font-size: 2rem;
+  }
+}

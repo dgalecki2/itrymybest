@@ -1,10 +1,11 @@
-.productsList {
-  &__categoryHeading {
-    margin: 2rem 0 1.2rem 0;
-  }
+.productCategory {
   &__container {
     display: flex;
     flex-direction: column;
     row-gap: 1.2rem;
+  }
+  &__heading {
+    cursor: pointer;
+    margin: 2rem 0 1.2rem 0;
   }
 }

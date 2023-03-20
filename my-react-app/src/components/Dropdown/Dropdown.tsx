@@ -1,5 +1,4 @@
 import { FormFieldValidationError } from "components/FormFieldValidationError/FormFieldValidationError";
-import { ReactComponent as ArrowheadIcon } from "icons/arrowhead.svg";
 import { useDropdown } from "./useDropdown";
 import "./Dropdown.scss";
 
@@ -51,7 +50,7 @@ export function Dropdown({
           })}
         </div>
       )}
-      <ArrowheadIcon className={iconClassName} />
+      <span className={iconClassName}>🔻</span>
       <label
         className="dropdown__label"
         htmlFor={id}

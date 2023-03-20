@@ -1,6 +1,8 @@
+@import "styles/colors.scss";
+
 .formFieldValidationError {
   &__errorMessage {
-    color: red;
+    color: $error;
     margin-top: 0.4rem;
   }
 }

@@ -1,9 +1,10 @@
+@import "styles/colors.scss";
 @import "styles/fonts.scss";
 
 .button {
   &__button {
-    background-color: lightsalmon;
-    border: 0.1rem solid lightsalmon;
+    background-color: $primaryColor;
+    border: 0.1rem solid $primaryColor;
     border-radius: 0.6rem;
     cursor: pointer;
     font-family: $primaryFontFamily;
@@ -13,9 +14,9 @@
       cursor: not-allowed;
     }
     &--cancelable {
-      background-color: white;
-      border: 0.1rem solid lightsalmon;
-      color: lightsalmon;
+      background-color: $white;
+      border: 0.1rem solid $primaryColor;
+      color: $primaryColor;
     }
   }
 }

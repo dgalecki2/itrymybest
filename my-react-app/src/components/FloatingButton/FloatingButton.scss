@@ -1,8 +1,10 @@
+@import "styles/colors.scss";
+
 .floatingButton {
   &__button {
-    background: lightsalmon;
+    background: $primaryColor;
     border-radius: 100%;
-    color: white;
+    color: $white;
     cursor: pointer;
     font-size: 3rem;
     padding: 0.8rem;

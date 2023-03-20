@@ -2,7 +2,7 @@ import { VALIDATOR_NAME } from "constants/validatorName";
 
 export function validateValue({ required, validatorName, value = "" }: any) {
   if (required && !value) {
-    return "This field is required!";
+    return "This field is required";
   }
   switch (validatorName) {
     case VALIDATOR_NAME.IMAGE_URL: {
@@ -14,7 +14,7 @@ export function validateValue({ required, validatorName, value = "" }: any) {
     }
     case VALIDATOR_NAME.IS_BOUGHT: {
       if (required && !value) {
-        return "Must be checked!";
+        return "Must be checked";
       }
       return undefined;
     }

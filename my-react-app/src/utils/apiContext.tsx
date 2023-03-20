@@ -22,7 +22,7 @@ const initialContext = {
     {
       categoryId: 1,
       id: 1,
-      isBought: false,
+      isBought: 0,
       measureUnitId: 1,
       name: "Apples",
       quantity: 3,
@@ -30,7 +30,7 @@ const initialContext = {
     {
       categoryId: 2,
       id: 2,
-      isBought: false,
+      isBought: 0,
       measureUnitId: 2,
       name: "Milk",
       quantity: 1,
@@ -38,7 +38,7 @@ const initialContext = {
     {
       categoryId: 3,
       id: 3,
-      isBought: true,
+      isBought: 1,
       measureUnitId: 3,
       name: "Bread",
       quantity: 2,
@@ -46,10 +46,26 @@ const initialContext = {
     {
       categoryId: 3,
       id: 4,
-      isBought: false,
+      isBought: 0,
       measureUnitId: 3,
       name: "Rolls",
       quantity: 6,
+    },
+    {
+      categoryId: 3,
+      id: 5,
+      isBought: 0,
+      measureUnitId: 3,
+      name: "Baguette",
+      quantity: 2,
+    },
+    {
+      categoryId: 3,
+      id: 6,
+      isBought: 1,
+      measureUnitId: 3,
+      name: "Pita",
+      quantity: 3,
     },
   ],
   removeProduct: (() => {}) as Dispatch<SetStateAction<any>>,
@@ -87,8 +103,11 @@ export function ApiContextProvider({ children }: any) {
       let newProductsList = [...products];
       newProductsList[foundProductIndex] = {
         ...products[foundProductIndex],
-        isBought: !products[foundProductIndex].isBought,
+        isBought: +products[foundProductIndex].isBought === 1 ? 0 : 1,
       };
+      newProductsList
+        .sort((item1, item2) => item1.name.localeCompare(item2.name))
+        .sort((item1, item2) => +item1.isBought - +item2.isBought);
       return newProductsList;
     });
   };

@@ -32,7 +32,7 @@ export function Product({
         </div>
         <div className="product__rightContainer">
           <ProductIcon onClick={() => toggleProductBoughtStatus(product.id)}>
-            {product.isBought ? <>❌</> : <>✅</>}
+            {+product.isBought === 1 ? <>❌</> : <>✅</>}
           </ProductIcon>
         </div>
       </div>

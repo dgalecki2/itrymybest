@@ -28,13 +28,13 @@ export function Dropdown({
     <div className="dropdown__container">
       <input
         className={dropdownClassName}
-        defaultValue={selectedOption.text || ""}
         id={id}
         onBlur={onBlur}
-        onChange={undefined}
+        onChange={() => ""}
         onClick={handleDropdownClick}
         onFocus={onFocus}
         type="text"
+        value={selectedOption.text || ""}
       />
       {areOptionsVisible && (
         <div className="dropdown__optionsContainer">

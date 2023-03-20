@@ -21,7 +21,7 @@ export function ProductsList() {
       const currentCategoryAllProductsQuantity = currentCategoryProducts.length;
       const currentCategoryUnboughtProductsQuantity =
         currentCategoryProducts.filter(
-          (product: any) => !product.isBought,
+          (product: any) => +product.isBought === 0,
         ).length;
       return (
         <div key={category.value}>

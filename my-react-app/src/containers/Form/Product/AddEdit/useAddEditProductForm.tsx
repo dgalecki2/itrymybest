@@ -49,17 +49,23 @@ export function useAddEditProductForm({ setIsModalVisible }: any) {
   };
   const onSubmit = (values: any) => {
     if (mode === FORM_MODE.ADD) {
-      setProductsList((list: any) => [
-        ...list,
-        {
-          categoryId: values.categoryId,
-          id: Math.floor(Math.random() * 1000000),
-          isBought: values?.isBought || false,
-          measureUnitId: values.measureUnitId,
-          name: values.name,
-          quantity: values.quantity,
-        },
-      ]);
+      setProductsList((list: any) => {
+        const newList = [
+          ...list,
+          {
+            categoryId: values.categoryId,
+            id: Math.floor(Math.random() * 1000000),
+            isBought: values?.isBought || 0,
+            measureUnitId: values.measureUnitId,
+            name: values.name,
+            quantity: values.quantity,
+          },
+        ];
+        newList
+          .sort((item1, item2) => item1.name.localeCompare(item2.name))
+          .sort((item1, item2) => +item1.isBought - +item2.isBought);
+        return newList;
+      });
       setProductToEditId(0);
       setIsModalVisible(false);
       return;
@@ -70,6 +76,9 @@ export function useAddEditProductForm({ setIsModalVisible }: any) {
       );
       let newList = [...list];
       newList[foundProductIndex] = values;
+      newList
+        .sort((item1, item2) => item1.name.localeCompare(item2.name))
+        .sort((item1, item2) => +item1.isBought - +item2.isBought);
       return newList;
     });
     setProductToEditId(0);

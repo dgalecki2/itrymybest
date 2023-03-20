@@ -1,4 +1,6 @@
+import { Image } from "components/Image/Image";
 import { Modal } from "components/Modal/Modal";
+import { Paragraph } from "components/Paragraph/Paragraph";
 import { ProductIcon } from "components/ProductIcon/ProductIcon";
 import { ProductName } from "components/ProductName/ProductName";
 import { AddEditProductForm } from "containers/Form/Product/AddEdit/AddEditProductForm";
@@ -23,6 +25,15 @@ export function Product({
             measureUnitName={measureUnitName}
             product={product}
           />
+          {product.imageUrl && (
+            <Modal trigger={<ProductIcon>👀</ProductIcon>}>
+              <Image
+                alt={`Image of ${product.name}`}
+                src={product.imageUrl}
+              />
+              <Paragraph>{product.name} ☝️</Paragraph>
+            </Modal>
+          )}
           <Modal
             onTriggerClick={() => setProductToEditId(product.id)}
             trigger={<ProductIcon>✏️</ProductIcon>}

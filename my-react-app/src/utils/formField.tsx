@@ -10,6 +10,16 @@ export const categoryId = ({ categoriesList = [] }: any) => ({
   required: true,
 });
 
+export const imageUrl = () => ({
+  elementType: ELEMENT_TYPE.INPUT,
+  format: (value = "") => trimValue(value),
+  formatOnBlur: false,
+  label: "Image URL",
+  name: "imageUrl",
+  required: false,
+  validatorName: VALIDATOR_NAME.IMAGE_URL,
+});
+
 export const isBought = () => ({
   elementType: ELEMENT_TYPE.CHECKBOX,
   label: "Is bought?",

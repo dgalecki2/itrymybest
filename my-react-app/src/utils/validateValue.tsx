@@ -5,6 +5,13 @@ export function validateValue({ required, validatorName, value = "" }: any) {
     return "This field is required!";
   }
   switch (validatorName) {
+    case VALIDATOR_NAME.IMAGE_URL: {
+      const regExpPassed = /^http[s]?\:\/\//.test(value.toLowerCase());
+      if (value && !regExpPassed) {
+        return "Must be valid URL";
+      }
+      return undefined;
+    }
     case VALIDATOR_NAME.IS_BOUGHT: {
       if (required && !value) {
         return "Must be checked!";

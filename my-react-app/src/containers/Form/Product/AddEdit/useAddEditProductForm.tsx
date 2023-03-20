@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { useApiContext } from "utils/apiContext";
 import {
   categoryId,
+  imageUrl,
   isBought,
   measureUnitId,
   name,
@@ -29,6 +30,7 @@ export function useAddEditProductForm({ setIsModalVisible }: any) {
       name(),
       quantity(),
       measureUnitId({ measureUnitsList }),
+      imageUrl(),
     );
     if (mode === FORM_MODE.EDIT) {
       formFields.push(isBought());
@@ -53,12 +55,9 @@ export function useAddEditProductForm({ setIsModalVisible }: any) {
         const newList = [
           ...list,
           {
-            categoryId: values.categoryId,
+            ...values,
             id: Math.floor(Math.random() * 1000000),
             isBought: values?.isBought || 0,
-            measureUnitId: values.measureUnitId,
-            name: values.name,
-            quantity: values.quantity,
           },
         ];
         newList

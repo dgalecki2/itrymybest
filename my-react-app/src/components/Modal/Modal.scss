@@ -1,7 +1,9 @@
+@import "styles/animations.scss";
 @import "styles/colors.scss";
 
 .modal {
   &__closeIcon {
+    @include iconRotationAnimation();
     cursor: pointer;
     font-size: 3rem;
     position: absolute;

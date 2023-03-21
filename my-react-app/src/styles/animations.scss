@@ -1,0 +1,28 @@
+@mixin commonTransitionAnimation($duration: 0.2s) {
+  transition: all $duration;
+}
+
+$iconRotateFrom: 0;
+$iconRrotateTo: -90deg;
+@keyframes iconRotationStart {
+  from {
+    transform: rotate($iconRotateFrom);
+  }
+  to {
+    transform: rotate($iconRrotateTo);
+  }
+}
+@keyframes iconRotationEnd {
+  from {
+    transform: rotate($iconRrotateTo);
+  }
+  to {
+    transform: rotate($iconRotateFrom);
+  }
+}
+@mixin iconRotationAnimation($duration: 0.1s, $iterationCount: 1) {
+  animation: iconRotationStart $duration $iterationCount;
+  &:hover {
+    animation: iconRotationEnd $duration $iterationCount;
+  }
+}

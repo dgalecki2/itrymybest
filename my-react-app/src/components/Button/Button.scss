@@ -1,8 +1,10 @@
+@import "styles/animations.scss";
 @import "styles/colors.scss";
 @import "styles/fonts.scss";
 
 .button {
   &__button {
+    @include commonTransitionAnimation();
     background-color: $primaryColor;
     border: 0.1rem solid $primaryColor;
     border-radius: 0.6rem;
@@ -12,6 +14,11 @@
     padding: 0.6rem 1.2rem;
     &:disabled {
       cursor: not-allowed;
+    }
+    &:hover {
+      @include commonTransitionAnimation();
+      background-color: $primaryColor;
+      color: $black;
     }
     &--cancelable {
       background-color: $white;

@@ -1,5 +1,6 @@
 @import "styles/animations.scss";
 @import "styles/colors.scss";
+@import "styles/mediaQueries.scss";
 
 .modal {
   &__closeIcon {
@@ -20,6 +21,9 @@
     padding: 4rem 0;
     position: relative;
     width: 50vw;
+    @include stylesForSmartphone() {
+      width: 90vw;
+    }
   }
   &__containerExternal {
     align-items: center;
@@ -32,6 +36,9 @@
     top: 0;
     width: 100vw;
     z-index: 9;
+    @include stylesForSmartphone() {
+      position: fixed;
+    }
   }
   &__content {
     box-sizing: border-box;
@@ -40,5 +47,11 @@
     max-width: 100%;
     padding: 2rem;
     row-gap: 2rem;
+    @include stylesForSmartphone() {
+      max-height: 60vh;
+      padding-bottom: 0;
+      padding-top: 0;
+      width: 100%;
+    }
   }
 }

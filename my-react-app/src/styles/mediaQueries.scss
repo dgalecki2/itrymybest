@@ -1,0 +1,5 @@
+@mixin stylesForSmartphone() {
+  @media (max-width: 80rem) {
+    @content;
+  }
+}

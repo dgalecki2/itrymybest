@@ -17,6 +17,7 @@ export function Form({ fields = [], initialValues, onCancel, onSubmit }: any) {
       {(formRenderProps) => {
         return (
           <form
+            className="form__form"
             onSubmit={(event) => {
               event.preventDefault();
               formRenderProps.handleSubmit();

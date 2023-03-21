@@ -1,7 +1,12 @@
+@import "styles/mediaQueries.scss";
+
 .layout {
   &__container {
     margin: 4rem auto;
     max-width: 40rem;
     text-align: center;
+    @include stylesForSmartphone() {
+      padding: 2rem;
+    }
   }
 }

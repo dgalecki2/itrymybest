@@ -1,3 +1,5 @@
+@import "styles/mediaQueries.scss";
+
 .form {
   &__buttonsContainer {
     column-gap: 2rem;
@@ -8,7 +10,16 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    max-width: 20rem;
     row-gap: 2rem;
+    @include stylesForSmartphone() {
+      margin: 0;
+      max-width: none;
+    }
+  }
+  &__form {
+    @include stylesForSmartphone() {
+      overflow-y: scroll;
+      padding-top: 1rem;
+    }
   }
 }

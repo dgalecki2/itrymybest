@@ -1,5 +1,6 @@
 @import "styles/animations.scss";
 @import "styles/colors.scss";
+@import "styles/mediaQueries.scss";
 
 .floatingButton {
   &__button {
@@ -14,8 +15,11 @@
   &__container {
     bottom: 0;
     margin: 4rem;
-    position: absolute;
+    position: fixed;
     right: 0;
+    @include stylesForSmartphone() {
+      margin: 2rem;
+    }
   }
   &__icon {
     position: relative;

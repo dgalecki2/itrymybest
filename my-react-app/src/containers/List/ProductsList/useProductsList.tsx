@@ -1,6 +1,6 @@
 import { useApiContext } from "utils/apiContext";
 
-export default function useProductsList() {
+export function useProductsList() {
   const { categoriesList, productsList }: any = useApiContext();
 
   return {

@@ -1,5 +1,5 @@
-import { Layout } from "components/Layout/Layout";
-import { StartPage } from "pages/Start/Start";
+import Layout from "components/Layout";
+import StartPage from "pages/Start";
 import ReactDOM from "react-dom/client";
 import { ApiContextProvider } from "utils/apiContext";
 import reportWebVitals from "./reportWebVitals";

@@ -1,11 +1,11 @@
-import { FloatingButton } from "components/FloatingButton/FloatingButton";
-import { Heading } from "components/Heading/Heading";
-import { Modal } from "components/Modal/Modal";
-import { AddEditProductForm } from "containers/Form/Product/AddEdit/AddEditProductForm";
-import { ProductsList } from "containers/List/ProductsList/ProductsList";
+import FloatingButton from "components/FloatingButton";
+import Heading from "components/Heading";
+import Modal from "components/Modal";
+import AddEditProductForm from "containers/Form/Product/AddEdit";
+import ProductsList from "containers/List/ProductsList";
 import { useStart } from "./useStart";
 
-export function StartPage() {
+export function Start() {
   useStart();
 
   return (

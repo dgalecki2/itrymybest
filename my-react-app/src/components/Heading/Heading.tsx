@@ -2,12 +2,12 @@ import { HeadingInterface } from "./Heading.interface";
 import { useHeading } from "./useHeading";
 import "./Heading.scss";
 
-export const Heading = ({
+export function Heading({
   children,
   className,
   level,
   onClick,
-}: HeadingInterface) => {
+}: HeadingInterface) {
   const { classNameFromHook, HeadingTag } = useHeading({ className, level });
 
   return (
@@ -18,4 +18,4 @@ export const Heading = ({
       {children}
     </HeadingTag>
   );
-};
+}

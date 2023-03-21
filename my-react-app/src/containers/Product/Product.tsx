@@ -1,10 +1,10 @@
-import { Image } from "components/Image/Image";
-import { Modal } from "components/Modal/Modal";
-import { Paragraph } from "components/Paragraph/Paragraph";
-import { ProductIcon } from "components/ProductIcon/ProductIcon";
-import { ProductName } from "components/ProductName/ProductName";
-import { AddEditProductForm } from "containers/Form/Product/AddEdit/AddEditProductForm";
-import { RemoveProductForm } from "containers/Form/Product/Remove/RemoveProductForm";
+import Image from "components/Image";
+import Modal from "components/Modal";
+import Paragraph from "components/Paragraph";
+import ProductIcon from "components/ProductIcon";
+import ProductName from "components/ProductName";
+import AddEditProductForm from "containers/Form/Product/AddEdit";
+import RemoveProductForm from "containers/Form/Product/Remove";
 import "./Product.scss";
 
 export function Product({

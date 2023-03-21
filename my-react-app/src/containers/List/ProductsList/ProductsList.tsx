@@ -1,5 +1,5 @@
-import { ProductCategory } from "containers/Category/ProductCategory/ProductCategory";
-import useProductsList from "./useProductsList";
+import ProductCategory from "containers/Category/ProductCategory";
+import { useProductsList } from "./useProductsList";
 
 export function ProductsList() {
   const { categoriesList, productsList } = useProductsList();

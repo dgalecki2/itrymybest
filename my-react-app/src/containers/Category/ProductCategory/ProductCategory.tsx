@@ -1,5 +1,5 @@
-import { Heading } from "components/Heading/Heading";
-import useProductCategory from "./useProductCategory";
+import Heading from "components/Heading";
+import { useProductCategory } from "./useProductCategory";
 import "./ProductCategory.scss";
 
 export function ProductCategory({ category }: any) {

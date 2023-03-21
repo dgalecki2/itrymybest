@@ -1,4 +1,4 @@
-import { FormFieldValidationError } from "components/FormFieldValidationError/FormFieldValidationError";
+import FormFieldValidationError from "components/FormFieldValidationError";
 import { useInput } from "./useInput";
 import "./Input.scss";
 

@@ -6,7 +6,7 @@ export function validateValue({ required, validatorName, value = "" }: any) {
   }
   switch (validatorName) {
     case VALIDATOR_NAME.IMAGE_URL: {
-      const regExpPassed = /^http[s]?\:\/\//.test(value.toLowerCase());
+      const regExpPassed = /^http[s]?:\/\//.test(value.toLowerCase());
       if (value && !regExpPassed) {
         return "Must be valid URL";
       }

@@ -1,6 +1,6 @@
-import { Form } from "components/Form/Form";
-import { Heading } from "components/Heading/Heading";
-import { Paragraph } from "components/Paragraph/Paragraph";
+import Form from "components/Form";
+import Heading from "components/Heading";
+import Paragraph from "components/Paragraph";
 import { useRemoveProductForm } from "./useRemoveProductForm";
 
 export function RemoveProductForm({ onSubmit, setIsModalVisible }: any) {

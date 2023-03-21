@@ -1,7 +1,7 @@
-import { Button } from "components/Button/Button";
-import { Checkbox } from "components/Checkbox/Checkbox";
-import { Dropdown } from "components/Dropdown/Dropdown";
-import { Input } from "components/Input/Input";
+import Button from "components/Button";
+import Checkbox from "components/Checkbox";
+import Dropdown from "components/Dropdown";
+import Input from "components/Input";
 import { BUTTON_TYPE } from "constants/buttonType";
 import { ELEMENT_TYPE } from "constants/elementType";
 import { Field, Form as ReactFinalForm } from "react-final-form";

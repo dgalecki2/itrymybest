@@ -1,0 +1,17 @@
+@import "styles/colors.scss";
+
+.errorBoundary {
+  &__container {
+    background-color: $lightCoral;
+    border-radius: 1.5rem;
+    padding: 1.2rem;
+    margin: 1.2rem;
+  }
+  &__errorMessage {
+    font-style: italic;
+    margin: 1.6rem 4rem;
+  }
+  &__tryAgainButton {
+    width: 100%;
+  }
+}

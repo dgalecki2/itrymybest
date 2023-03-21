@@ -1,8 +1,8 @@
-import { Product } from "containers/Product/Product";
+import Product from "containers/Product";
 import { useEffect, useState } from "react";
 import { useApiContext } from "utils/apiContext";
 
-export default function useProductCategory({ category }: any) {
+export function useProductCategory({ category }: any) {
   const {
     measureUnitsList,
     productsList,

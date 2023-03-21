@@ -1,5 +1,5 @@
-import { Form } from "components/Form/Form";
-import { Heading } from "components/Heading/Heading";
+import Form from "components/Form";
+import Heading from "components/Heading";
 import { useAddEditProductForm } from "./useAddEditProductForm";
 
 export function AddEditProductForm({ setIsModalVisible }: any) {

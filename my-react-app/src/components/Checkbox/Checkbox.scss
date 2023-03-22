@@ -1,5 +1,6 @@
 @import "styles/colors.scss";
 @import "styles/fonts.scss";
+@import "styles/mixins.scss";
 
 .checkbox {
   &__checkboxContainer {
@@ -20,10 +21,8 @@
     }
   }
   &__label {
-    align-items: center;
-    display: flex;
+    @include useFlex($alignItems: center, $justifyContent: space-between);
     font-size: 1.2rem;
-    justify-content: space-between;
     position: relative;
   }
   &__slider {

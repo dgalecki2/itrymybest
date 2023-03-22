@@ -1,12 +1,10 @@
+@import "styles/mixins.scss";
+
 .product {
   &__container {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+    @include useFlex($alignItems: center, $justifyContent: space-between);
   }
   &__leftContainer {
-    align-items: center;
-    column-gap: 1rem;
-    display: flex;
+    @include useFlex($alignItems: center, $columnGap: 1rem);
   }
 }

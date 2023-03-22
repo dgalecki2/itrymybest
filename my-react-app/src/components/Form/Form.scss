@@ -1,16 +1,13 @@
 @import "styles/mediaQueries.scss";
+@import "styles/mixins.scss";
 
 .form {
   &__buttonsContainer {
-    column-gap: 2rem;
-    display: flex;
-    justify-content: space-evenly;
+    @include useFlex($columnGap: 2rem, $justifyContent: space-evenly);
   }
   &__fieldsContainer {
-    display: flex;
-    flex-direction: column;
+    @include useFlex($flexDirection: column, $rowGap: 2rem);
     margin: 0 auto;
-    row-gap: 2rem;
     @include stylesForSmartphone() {
       margin: 0;
       max-width: none;

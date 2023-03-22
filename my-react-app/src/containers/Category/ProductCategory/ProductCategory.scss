@@ -1,8 +1,8 @@
+@import "styles/mixins.scss";
+
 .productCategory {
   &__container {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.2rem;
+    @include useFlex($flexDirection: column, $rowGap: 1.2rem);
   }
   &__heading {
     cursor: pointer;

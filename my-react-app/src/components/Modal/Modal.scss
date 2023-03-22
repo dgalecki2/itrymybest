@@ -1,6 +1,7 @@
 @import "styles/animations.scss";
 @import "styles/colors.scss";
 @import "styles/mediaQueries.scss";
+@import "styles/mixins.scss";
 
 .modal {
   &__closeIcon {
@@ -12,12 +13,10 @@
     top: 0;
   }
   &__container {
-    align-items: center;
+    @include useFlex($alignItems: center, $justifyContent: center);
     background-color: $white;
     border: 0.1rem solid $primaryColor;
     border-radius: 0.8rem;
-    display: flex;
-    justify-content: center;
     padding: 4rem 0;
     position: relative;
     width: 50vw;
@@ -26,11 +25,9 @@
     }
   }
   &__containerExternal {
-    align-items: center;
+    @include useFlex($alignItems: center, $justifyContent: center);
     backdrop-filter: blur(0.4rem);
-    display: flex;
     height: 100vh;
-    justify-content: center;
     left: 0;
     position: absolute;
     top: 0;
@@ -41,12 +38,10 @@
     }
   }
   &__content {
+    @include useFlex($flexDirection: column, $rowGap: 2rem);
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
     max-width: 100%;
     padding: 2rem;
-    row-gap: 2rem;
     @include stylesForSmartphone() {
       max-height: 60vh;
       padding-bottom: 0;

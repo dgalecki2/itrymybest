@@ -1,0 +1,24 @@
+@mixin useFlex(
+  $alignItems: "",
+  $columnGap: "",
+  $flexDirection: "",
+  $justifyContent: "",
+  $rowGap: ""
+) {
+  display: flex;
+  @if $alignItems != "" {
+    align-items: $alignItems;
+  }
+  @if $columnGap != "" {
+    column-gap: $columnGap;
+  }
+  @if $flexDirection != "" {
+    flex-direction: $flexDirection;
+  }
+  @if $justifyContent != "" {
+    justify-content: $justifyContent;
+  }
+  @if $rowGap != "" {
+    row-gap: $rowGap;
+  }
+}

@@ -19,12 +19,16 @@ export function Dropdown({
     handleDropdownClick,
     handleOptionClick,
     iconClassName,
+    ref,
     selectedOption,
     withError,
   } = useDropdown({ meta, onChange, options, value });
 
   return (
-    <div className="dropdown__container">
+    <div
+      className="dropdown__container"
+      ref={ref}
+    >
       <input
         className={dropdownClassName}
         id={id}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useDetectClickOutside } from "react-detect-click-outside";
 import { renderClassName } from "utils/className";
 
 export function useDropdown({ meta, onChange, options, value }: any) {
@@ -27,6 +28,7 @@ export function useDropdown({ meta, onChange, options, value }: any) {
   });
   const withError = meta.error && meta.touched;
 
+  const handleClickOutside = () => setAreOptionsVisible(false);
   const handleDropdownClick = () =>
     setAreOptionsVisible((visible: boolean) => !visible);
   const handleOptionClick = (option: any) => {
@@ -35,12 +37,16 @@ export function useDropdown({ meta, onChange, options, value }: any) {
     onChange(option.value);
   };
 
+  const ref = useDetectClickOutside({ onTriggered: handleClickOutside });
+
   return {
     areOptionsVisible,
     dropdownClassName,
+    handleClickOutside,
     handleDropdownClick,
     handleOptionClick,
     iconClassName,
+    ref,
     selectedOption,
     withError,
   };

@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useApiContext } from "utils/apiContext";
+import { UseStartUseApiContextInterface } from "./Start.interface";
 
 export function useStart() {
-  const { setProductsList }: any = useApiContext();
+  const { setProductsList }: UseStartUseApiContextInterface = useApiContext();
 
   useEffect(() => {
-    setProductsList((list: any) => {
+    setProductsList((list) => {
       const newList = [...list];
       newList
         .sort((item1, item2) => item1.name.localeCompare(item2.name))

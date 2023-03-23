@@ -1,3 +1,4 @@
+import { CheckboxInterface } from "./Checkbox.interface";
 import { useCheckbox } from "./useCheckbox";
 import "./Checkbox.scss";
 
@@ -9,10 +10,10 @@ export function Checkbox({
   onChange,
   onFocus,
   required,
-}: any) {
+}: CheckboxInterface) {
   const { withError } = useCheckbox({
     error: meta.error,
-    touched: meta.touched,
+    touched: !!meta.touched,
   });
 
   return (

@@ -1,8 +1,15 @@
-import { ELEMENT_TYPE } from "constants/elementType";
 import { VALIDATOR_NAME } from "constants/validatorName";
+import {
+  CategoryIdInterface,
+  FormFieldInterface,
+  MeasureUnitIdInterface,
+} from "./formField.interface";
 import { trimValue } from "./formatValue";
+import { ELEMENT_TYPE } from "constants/elementType";
 
-export function categoryId({ categoriesList = [] }: any) {
+export function categoryId({
+  categoriesList = [],
+}: CategoryIdInterface): FormFieldInterface {
   return {
     elementType: ELEMENT_TYPE.DROPDOWN,
     label: "Category",
@@ -34,7 +41,9 @@ export function isBought() {
   };
 }
 
-export function measureUnitId({ measureUnitsList = [] }: any) {
+export function measureUnitId({
+  measureUnitsList = [],
+}: MeasureUnitIdInterface) {
   return {
     elementType: ELEMENT_TYPE.DROPDOWN,
     label: "Measure Unit",
@@ -63,7 +72,8 @@ export function quantity() {
     formatOnBlur: false,
     label: "Quantity",
     name: "quantity",
-    onChange: (event: any) => event.target.value,
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
+      event.target.value,
     required: true,
     validatorName: VALIDATOR_NAME.PRODUCT_QUANTITY,
   };

@@ -1,24 +1,26 @@
 import Product from "containers/Product";
 import { useEffect, useState } from "react";
 import { useApiContext } from "utils/apiContext";
+import {
+  UseProductCategoryInterface,
+  UseProductCategoryUseApiContextInterface,
+} from "./ProductCategory.interface";
 
-export function useProductCategory({ category }: any) {
+export function useProductCategory({ category }: UseProductCategoryInterface) {
   const {
     measureUnitsList,
     productsList,
     removeProduct,
     setProductToEditId,
     toggleProductBoughtStatus,
-  }: any = useApiContext();
+  }: UseProductCategoryUseApiContextInterface = useApiContext();
 
   const currentCategoryProducts = productsList.filter(
-    (product: any) => +product.categoryId === +category.value,
+    (product) => +product.categoryId === +category.value,
   );
   const currentCategoryAllProductsQuantity = currentCategoryProducts.length;
   const currentCategoryUnboughtProductsQuantity =
-    currentCategoryProducts.filter(
-      (product: any) => +product.isBought === 0,
-    ).length;
+    currentCategoryProducts.filter((product) => +product.isBought === 0).length;
 
   const [isCategoryVisible, setIsCategoryVisible] = useState(true);
 
@@ -26,11 +28,12 @@ export function useProductCategory({ category }: any) {
   const hideCategoryProducts = () => setIsCategoryVisible(false);
 
   const categoryProducts = productsList
-    .filter((product: any) => +product.categoryId === +category.value)
-    .map((product: any) => {
-      const measureUnitName = measureUnitsList.find(
-        (measureUnit: any) => +product.measureUnitId === +measureUnit.value,
-      ).text;
+    .filter((product) => +product.categoryId === +category.value)
+    .map((product) => {
+      const measureUnitName =
+        measureUnitsList.find(
+          (measureUnit) => +product.measureUnitId === +measureUnit.value,
+        )?.text || "";
       return (
         <Product
           key={product.name}

@@ -1,4 +1,5 @@
 import FormFieldValidationError from "components/FormFieldValidationError";
+import { DropdownInterface } from "./Dropdown.interface";
 import { useDropdown } from "./useDropdown";
 import "./Dropdown.scss";
 
@@ -12,7 +13,7 @@ export function Dropdown({
   options = [],
   required,
   value,
-}: any) {
+}: DropdownInterface) {
   const {
     areOptionsVisible,
     dropdownClassName,
@@ -41,7 +42,7 @@ export function Dropdown({
       />
       {areOptionsVisible && (
         <div className="dropdown__optionsContainer">
-          {options.map((option: any) => {
+          {options.map((option) => {
             return (
               <div
                 className="dropdown__option"

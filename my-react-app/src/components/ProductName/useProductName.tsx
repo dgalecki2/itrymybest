@@ -1,6 +1,10 @@
 import { renderClassName } from "utils/className";
+import { UseProductNameInterface } from "./ProductName.interface";
 
-export function useProductName({ measureUnitName, product }: any) {
+export function useProductName({
+  measureUnitName,
+  product,
+}: UseProductNameInterface) {
   const className = renderClassName({
     constant: "productName__name",
     variable: {

@@ -1,6 +1,11 @@
 export interface HeadingInterface {
-  children: any;
+  children: React.ReactNode;
   className?: string;
   level: number;
-  onClick?: any;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+export interface UseHeadingInterface {
+  className: string;
+  level: number;
 }

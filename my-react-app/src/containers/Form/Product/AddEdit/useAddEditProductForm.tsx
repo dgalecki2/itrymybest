@@ -9,8 +9,15 @@ import {
   name,
   quantity,
 } from "utils/formField";
+import {
+  ProductInterface,
+  UseAddEditProductApiContextFormInterface,
+  UseAddEditProductFormInterface,
+} from "./AddEditProductForm.interface";
 
-export function useAddEditProductForm({ setIsModalVisible }: any) {
+export function useAddEditProductForm({
+  setIsModalVisible,
+}: UseAddEditProductFormInterface) {
   const {
     categoriesList,
     measureUnitsList,
@@ -18,12 +25,12 @@ export function useAddEditProductForm({ setIsModalVisible }: any) {
     productsList,
     setProductToEditId,
     setProductsList,
-  }: any = useApiContext();
+  }: UseAddEditProductApiContextFormInterface = useApiContext();
 
   const mode = useMemo(() => {
     return +productToEditId > 0 ? FORM_MODE.EDIT : FORM_MODE.ADD;
   }, [productToEditId]);
-  const renderFormFields: any = () => {
+  const renderFormFields = () => {
     const formFields = [];
     formFields.push(
       categoryId({ categoriesList }),
@@ -40,18 +47,16 @@ export function useAddEditProductForm({ setIsModalVisible }: any) {
   const headingText = `${mode === FORM_MODE.EDIT ? "Edit" : "Add new"} product`;
   const initialValues =
     mode === FORM_MODE.EDIT
-      ? productsList.find((item: any) => +item.id === +productToEditId)
-      : {};
+      ? productsList.find((item) => +item.id === +productToEditId)
+      : undefined;
 
   const onCancel = () => {
-    setProductToEditId(() => {
-      setIsModalVisible(false);
-      return 0;
-    });
+    setProductToEditId(0);
+    setIsModalVisible && setIsModalVisible(false);
   };
-  const onSubmit = (values: any) => {
+  const onSubmit = (values: ProductInterface) => {
     if (mode === FORM_MODE.ADD) {
-      setProductsList((list: any) => {
+      setProductsList((list) => {
         const newList = [
           ...list,
           {
@@ -66,12 +71,12 @@ export function useAddEditProductForm({ setIsModalVisible }: any) {
         return newList;
       });
       setProductToEditId(0);
-      setIsModalVisible(false);
+      setIsModalVisible && setIsModalVisible(false);
       return;
     }
-    setProductsList((list: any) => {
+    setProductsList((list) => {
       const foundProductIndex = list.findIndex(
-        (product: any) => +product.id === +values.id,
+        (product) => +product.id === +values.id,
       );
       let newList = [...list];
       newList[foundProductIndex] = values;
@@ -81,7 +86,7 @@ export function useAddEditProductForm({ setIsModalVisible }: any) {
       return newList;
     });
     setProductToEditId(0);
-    setIsModalVisible(false);
+    setIsModalVisible && setIsModalVisible(false);
   };
 
   return {

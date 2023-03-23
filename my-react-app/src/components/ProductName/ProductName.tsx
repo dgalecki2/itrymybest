@@ -1,7 +1,11 @@
+import { ProductNameInterface } from "./ProductName.interface";
 import { useProductName } from "./useProductName";
 import "./ProductName.scss";
 
-export function ProductName({ measureUnitName, product }: any) {
+export function ProductName({
+  measureUnitName,
+  product,
+}: ProductNameInterface) {
   const { className, productDetails } = useProductName({
     measureUnitName,
     product,

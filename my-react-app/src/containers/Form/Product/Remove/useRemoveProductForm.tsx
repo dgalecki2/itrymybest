@@ -1,10 +1,15 @@
-export function useRemoveProductForm({ onSubmit, setIsModalVisible }: any) {
+import { UseRemoveProductFormInterface } from "./RemoveProductForm.interface";
+
+export function useRemoveProductForm({
+  onSubmit,
+  setIsModalVisible,
+}: UseRemoveProductFormInterface) {
   const onCancel = () => {
-    setIsModalVisible(false);
+    setIsModalVisible && setIsModalVisible(false);
   };
   const onSubmitFromHook = () => {
     onSubmit();
-    setIsModalVisible(false);
+    setIsModalVisible && setIsModalVisible(false);
   };
 
   return {

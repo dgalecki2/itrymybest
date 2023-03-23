@@ -1,8 +1,9 @@
 import Heading from "components/Heading";
+import { ProductCategoryInterface } from "./ProductCategory.interface";
 import { useProductCategory } from "./useProductCategory";
 import "./ProductCategory.scss";
 
-export function ProductCategory({ category }: any) {
+export function ProductCategory({ category }: ProductCategoryInterface) {
   const {
     categoryProducts,
     currentCategoryAllProductsQuantity,

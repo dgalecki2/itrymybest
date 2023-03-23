@@ -1,4 +1,5 @@
 import FormFieldValidationError from "components/FormFieldValidationError";
+import { InputInterface } from "./Input.interface";
 import { useInput } from "./useInput";
 import "./Input.scss";
 
@@ -11,10 +12,10 @@ export function Input({
   onFocus,
   required,
   value,
-}: any) {
+}: InputInterface) {
   const { inputClassName, withError } = useInput({
     error: meta.error,
-    touched: meta.touched,
+    touched: !!meta.touched,
     value,
   });
 

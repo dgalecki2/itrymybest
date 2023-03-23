@@ -5,17 +5,23 @@ import {
   useState,
   SetStateAction,
 } from "react";
+import {
+  ApiContextProviderInterface,
+  MeasureUnitsListInterface,
+  ProductCategoryDetailsInterface,
+  ProductInterface,
+} from "./apiContext.interface";
 
 const initialContext = {
   categoriesList: [
-    { icon: <>🍎</>, text: "Fruits", value: 1 },
-    { icon: <>💦</>, text: "Dairy", value: 2 },
-    { icon: <>🍞</>, text: "Bread", value: 3 },
+    { icon: <>🍎</>, text: "Fruits", value: "1" },
+    { icon: <>💦</>, text: "Dairy", value: "2" },
+    { icon: <>🍞</>, text: "Bread", value: "3" },
   ],
   measureUnitsList: [
-    { text: "kilogram(s)", value: 1 },
-    { text: "liter(s)", value: 2 },
-    { text: "piece(s)", value: 3 },
+    { text: "kilogram(s)", value: "1" },
+    { text: "liter(s)", value: "2" },
+    { text: "piece(s)", value: "3" },
   ],
   productToEditId: 0,
   productsList: [
@@ -68,37 +74,39 @@ const initialContext = {
       quantity: 3,
     },
   ],
-  removeProduct: (() => {}) as Dispatch<SetStateAction<any>>,
-  setCategoriesList: (() => {}) as Dispatch<SetStateAction<any>>,
-  setMeasureUnitsList: (() => {}) as Dispatch<SetStateAction<any>>,
-  setProductToEditId: (() => {}) as Dispatch<SetStateAction<any>>,
-  setProductsList: (() => {}) as Dispatch<SetStateAction<any>>,
-  toggleProductBoughtStatus: (() => {}) as Dispatch<SetStateAction<any>>,
+  removeProduct: (productId: number) => {},
+  setCategoriesList: (() => {}) as Dispatch<
+    SetStateAction<ProductCategoryDetailsInterface[]>
+  >,
+  setMeasureUnitsList: (() => {}) as Dispatch<
+    SetStateAction<MeasureUnitsListInterface[]>
+  >,
+  setProductToEditId: (() => {}) as Dispatch<SetStateAction<number>>,
+  setProductsList: (() => {}) as Dispatch<SetStateAction<ProductInterface[]>>,
+  toggleProductBoughtStatus: (productId: number) => {},
 };
 
 const ApiContext = createContext(initialContext);
 
-export function ApiContextProvider({ children }: any) {
-  const [categoriesList, setCategoriesList] = useState<any>(
+export function ApiContextProvider({ children }: ApiContextProviderInterface) {
+  const [categoriesList, setCategoriesList] = useState(
     initialContext.categoriesList,
   );
-  const [measureUnitsList, setMeasureUnitsList] = useState<any>(
+  const [measureUnitsList, setMeasureUnitsList] = useState(
     initialContext.measureUnitsList,
   );
-  const [productToEditId, setProductToEditId] = useState<number>(0);
-  const [productsList, setProductsList] = useState<any>(
-    initialContext.productsList,
-  );
+  const [productToEditId, setProductToEditId] = useState(0);
+  const [productsList, setProductsList] = useState(initialContext.productsList);
 
-  const removeProduct = (productId: any) => {
-    setProductsList((products: any) =>
-      products.filter((product: any) => product.id !== productId),
+  const removeProduct = (productId: number) => {
+    setProductsList((products: ProductInterface[]) =>
+      products.filter((product) => product.id !== productId),
     );
   };
-  const toggleProductBoughtStatus = (productId: any) => {
-    setProductsList((products: any) => {
+  const toggleProductBoughtStatus = (productId: number) => {
+    setProductsList((products: ProductInterface[]) => {
       const foundProductIndex = products.findIndex(
-        (product: any) => +product.id === +productId,
+        (product) => +product.id === +productId,
       );
       let newProductsList = [...products];
       newProductsList[foundProductIndex] = {

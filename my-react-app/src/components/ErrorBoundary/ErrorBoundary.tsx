@@ -1,12 +1,13 @@
 import Button from "components/Button";
 import Paragraph from "components/Paragraph";
 import { ErrorBoundary as ReactErrorBoundary } from "react-error-boundary";
+import { ErrorBoundaryInterface } from "./ErrorBoundary.interface";
 import "./ErrorBoundary.scss";
 
-export function ErrorBoundary({ children }: any) {
+export function ErrorBoundary({ children }: ErrorBoundaryInterface) {
   return (
     <ReactErrorBoundary
-      FallbackComponent={({ error, resetErrorBoundary }: any) => {
+      FallbackComponent={({ error, resetErrorBoundary }) => {
         return (
           <div className="errorBoundary__container">
             <Paragraph>An error occurred:</Paragraph>
@@ -21,7 +22,7 @@ export function ErrorBoundary({ children }: any) {
           </div>
         );
       }}
-      onError={({ message }: any, { componentStack }: any) => {
+      onError={({ message }, { componentStack }) => {
         console.error(message, componentStack);
       }}
     >

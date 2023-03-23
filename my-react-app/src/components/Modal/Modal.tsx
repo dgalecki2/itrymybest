@@ -1,8 +1,13 @@
 import { Children, cloneElement, isValidElement, ReactElement } from "react";
+import { ModalInterface } from "./Modal.interface";
 import { useModal } from "./useModal";
 import "./Modal.scss";
 
-export function Modal({ children, onTriggerClick, trigger }: any) {
+export function Modal({
+  children,
+  onTriggerClick = () => {},
+  trigger,
+}: ModalInterface) {
   const {
     handleCloseIconClick,
     handleTriggerClick,

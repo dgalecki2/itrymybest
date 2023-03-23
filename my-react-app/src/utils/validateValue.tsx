@@ -1,6 +1,11 @@
 import { VALIDATOR_NAME } from "constants/validatorName";
+import { ValidateValueInterface } from "./validateValue.interface";
 
-export function validateValue({ required, validatorName, value = "" }: any) {
+export function validateValue({
+  required,
+  validatorName,
+  value = "",
+}: ValidateValueInterface) {
   if (required && !value) {
     return "This field is required";
   }

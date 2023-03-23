@@ -2,13 +2,18 @@ import Button from "components/Button";
 import Checkbox from "components/Checkbox";
 import Dropdown from "components/Dropdown";
 import Input from "components/Input";
-import { BUTTON_TYPE } from "constants/buttonType";
 import { ELEMENT_TYPE } from "constants/elementType";
 import { Field, Form as ReactFinalForm } from "react-final-form";
 import { validateValue } from "utils/validateValue";
+import { FormInterface } from "./Form.interface";
 import "./Form.scss";
 
-export function Form({ fields = [], initialValues, onCancel, onSubmit }: any) {
+export function Form({
+  fields,
+  initialValues,
+  onCancel,
+  onSubmit,
+}: FormInterface) {
   return (
     <ReactFinalForm
       initialValues={initialValues}
@@ -24,7 +29,7 @@ export function Form({ fields = [], initialValues, onCancel, onSubmit }: any) {
             }}
           >
             <div className="form__fieldsContainer">
-              {fields.map((field: any) => {
+              {fields.map((field) => {
                 const fieldKey = `field-${field.name}`;
                 const fieldId = `field-id-${field.name}`;
                 switch (field.elementType) {
@@ -75,7 +80,7 @@ export function Form({ fields = [], initialValues, onCancel, onSubmit }: any) {
                             id={fieldId}
                             label={field.label}
                             meta={fieldRenderProps.meta}
-                            options={field.options}
+                            options={field.options || []}
                             required={field.required}
                             value={initialValues?.[field.name]}
                           />
@@ -121,13 +126,12 @@ export function Form({ fields = [], initialValues, onCancel, onSubmit }: any) {
                   className="button__button"
                   disabled={formRenderProps.hasValidationErrors}
                   text="Submit"
-                  type={BUTTON_TYPE.SUBMIT}
+                  type="submit"
                 />
                 <Button
                   className="button__button button__button--cancelable"
                   onClick={onCancel}
                   text="Cancel"
-                  type={BUTTON_TYPE.BUTTON}
                 />
               </div>
             </div>

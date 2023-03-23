@@ -1,7 +1,14 @@
+import { ButtonInterface } from "./Button.interface";
 import { useButton } from "./useButton";
 import "./Button.scss";
 
-export function Button({ className, disabled, onClick, text, type }: any) {
+export function Button({
+  className,
+  disabled = false,
+  onClick = () => {},
+  text,
+  type = "button",
+}: ButtonInterface) {
   const { classNameFromHook } = useButton({ className });
 
   return (

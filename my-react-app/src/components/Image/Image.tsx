@@ -1,6 +1,7 @@
+import { ImageInterface } from "./Image.interface";
 import "./Image.scss";
 
-export function Image({ alt = "Image", src }: any) {
+export function Image({ alt = "Image", src }: ImageInterface) {
   return (
     <img
       alt={alt}

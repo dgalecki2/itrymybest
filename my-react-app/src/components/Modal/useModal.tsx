@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useApiContext } from "utils/apiContext";
+import { UseModalInterface } from "./Modal.interface";
 
-export function useModal({ onTriggerClick }: any) {
-  const { setProductToEditId }: any = useApiContext();
+export function useModal({ onTriggerClick }: UseModalInterface) {
+  const { setProductToEditId } = useApiContext();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 

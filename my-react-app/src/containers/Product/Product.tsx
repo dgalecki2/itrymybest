@@ -5,6 +5,7 @@ import ProductIcon from "components/ProductIcon";
 import ProductName from "components/ProductName";
 import AddEditProductForm from "containers/Form/Product/AddEdit";
 import RemoveProductForm from "containers/Form/Product/Remove";
+import { ProductInterface } from "./Product.interface";
 import "./Product.scss";
 
 export function Product({
@@ -13,7 +14,7 @@ export function Product({
   removeProduct,
   setProductToEditId,
   toggleProductBoughtStatus,
-}: any) {
+}: ProductInterface) {
   return (
     <>
       <div className="product__container">
